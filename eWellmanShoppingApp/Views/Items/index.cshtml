@@ -1,0 +1,29 @@
+﻿@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.Item>
+
+@{
+	ViewBag.Title = "Store";
+}	
+<head>
+	<meta charset="utf-8" />
+	
+</head>
+<body>
+	@foreach(var item in Model) {
+	<div class="col-sm-3 vCenter itemHack">
+		<h3>@item.name</h3>
+		<a href="@Html.ActionLink("#", "#", new {id = item.id})" data-toggle="modal" data-target="#itemModal"><img class="img-responsive" src="@item.mediaURL" /></a>
+		<h5>$@item.price</h5>
+		<button class="btn btn-danger butOutline">Purchase</button>
+	</div>
+	}
+	<!--Container for the inventory/-->
+	<div class="row">
+		<div class="subBox">
+			<h1>Subscribe</h1>
+			<p>To get special offers and <span style="color:#ff0000;">VIP</span> treatment:</p>
+			<input placeholder="E-mail" class="form-control formBott" />
+			<button class="btn btn-danger butOutline">Subscribe</button>
+		</div>
+	</div>
+</body>
+

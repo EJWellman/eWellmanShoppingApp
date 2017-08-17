@@ -1,0 +1,139 @@
+﻿body{
+	background-color: beige;
+	margin: 30px 20px 0px 20px;
+}
+
+h3, h4, h5{
+	color:brown;
+}
+
+/*CSS to handle all of the styling of the horizontal navigation bar at the top*/
+.navFix{
+	background-color: brown !important;
+	color:beige !important;
+}
+.navFix li a{
+	background-color: brown !important;
+	color:beige !important;
+}
+.navFix li a:hover,
+.navFix li a:active{
+	background-color:beige !important;
+	color:brown !important;
+}
+.navFix.dropdown-menu{
+	background-color:brown !important;
+	color:beige !important;
+}
+.navFix.dropdown-menu li {
+	color:beige !important;
+}
+.navFix.dropdown-menu ul{
+	color: beige !important;
+}
+.navFix.dropdown-menu li a:hover,
+.navFix.dropdown-menu li a:active{
+	color: beige !important;
+}
+.navFix input{
+	min-width:150px;
+}
+.modalFix{
+	background-color:beige;
+}
+/*Navigation bar CSS ends here*/
+.texCen {
+	text-align:center;
+}
+/*CSS to hand all styling for the inventory/sales area*/
+/*Overrides the float:left that Bootstrap uses, and allows the images to properly align vertically in their rows*/
+/*Horizontal alignment is still handled by Bootstrap grids*/
+.dummyCol{
+	display:inline;
+	float:none;
+	vertical-align:middle;
+	margin-right:4px;
+	height:0px;
+}
+.vCenter {
+	display:inline-block;
+	vertical-align: middle;
+	float:none;
+	margin-right:-4px;
+}
+.itemHack h3{
+	height:45px;
+}
+.vCenter h3{
+	vertical-align:top;
+}
+.inv button{
+	border:none;
+	background-color:brown;
+	color:beige;
+	vertical-align:bottom;
+}
+.inv button:hover{
+	background-color:#000;
+	color:#808080;
+	cursor:default;
+}
+/*
+ADDITION FROM SHOPPING CART #1
+*/
+/*For standard Navigation Bar links*/
+/*For Store Finder Link*/
+.findLink a {
+	display: inline-block;
+	color: #000;
+	text-decoration: none;
+}
+/*Hover properties for navLinks*/
+.findLink a:hover {
+	background-color: #808080;
+	color: #fff;
+}
+/*Styling for Subscription Box*/
+.subBox {
+	text-align:left;
+	background-color: brown;
+	color: #fff;
+	padding: 15px;
+	padding-top: 1px;
+	padding-bottom: 20px;
+	margin-top: 25px;
+}
+.botInfoBox {
+	background-color: #eeeec3;
+	line-height: 25px;
+}
+.footBox {
+	text-align: center;
+	background-color: brown;
+	color: #fff;
+}
+.footBox a{
+	color:beige;
+	text-decoration:none;
+}
+/*Adds an outline to buttons*/
+.butOutline {
+	border-radius: 0px;
+	transition: all 0.3s;
+}
+/*Reskins the Bootstrap 'danger button'*/
+.butOutline.btn-danger {
+	background: #ff0000;
+	border: 3px solid #ff0000;
+	color: #fff;
+}
+.butOutline.btn-danger:hover,
+.butOutline.btn-danger:active {
+	color: #fff;
+	background: none;
+	cursor: default;
+}
+/*Modifies the margins, used for input forms mostly*/
+.formBott {
+	margin-bottom: 10px;
+}

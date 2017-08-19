@@ -8,12 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using eWellmanShoppingApp.Models;
 using eWellmanShoppingApp.Models.CodeFirst;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace eWellmanShoppingApp.Controllers
 {
     public class CartItemsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CartItems
         public ActionResult Index()
@@ -47,20 +49,29 @@ namespace eWellmanShoppingApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,customerID,itemID,count,creationDate")] CartItem cartItem)
-        {
-            if (ModelState.IsValid)
-            {
-                db.cartItems.Add(cartItem);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        public ActionResult Create(int? idIn) {
+			if (idIn == null) {
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Item itemIn = db.items.Find(idIn);
+			if (itemIn == null) {
+				return HttpNotFound();
+			}
+			var user = db.Users.Find(User.Identity.GetUserId());
+			CartItem cartItem = new CartItem() {
+				count = 1,
+				creationDate = DateTime.Now,
+				customerID = user.Id,
+				itemID = itemIn.id
+			};
+			db.cartItems.Add(cartItem);
+			db.SaveChanges();
 
-            return View(cartItem);
-        }
+			return View();
+		}
 
-        // GET: CartItems/Edit/5
-        public ActionResult Edit(int? id)
+		// GET: CartItems/Edit/5
+		public ActionResult Edit(int? id)
         {
             if (id == null)
             {

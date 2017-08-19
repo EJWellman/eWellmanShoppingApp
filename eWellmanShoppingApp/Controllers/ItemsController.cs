@@ -38,17 +38,24 @@ namespace eWellmanShoppingApp.Controllers
             }
             return View(item);
 		}
-		// GET: Items/Details/5
+		// GET: Items/Details/Partial
 		public ActionResult DetailsPartial(int? id) {
 			if (id == null) {
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			Item item = db.items.Find(id);
-			if (item == null) {
-				return HttpNotFound();
-			}
-			return View(item);
+			Item itemToPass = db.items.Find(id);
+			return PartialView(itemToPass);
 		}
+		//public ActionResult DetailsPartial(int? id) {
+		//	if (id == null) {
+		//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+		//	}
+		//	Item item = db.items.Find(id);
+		//	if (item == null) {
+		//		return HttpNotFound();
+		//	}
+		//	return View(item);
+		//}
 
 		// GET: Items/Create
 		[Authorize(Roles = "Admin")]

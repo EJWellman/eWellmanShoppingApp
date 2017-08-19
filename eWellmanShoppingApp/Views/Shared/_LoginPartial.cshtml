@@ -21,7 +21,7 @@
 				</li>
 			</ul>
 		</li>
-		<li><a href="#"><i class="fa fa-fw fa-shopping-cart"></i></a></li>
+		<li><a href="@Url.Action("Index","CartItems")"><i class="fa fa-fw fa-shopping-cart"></i></a></li>
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
@@ -47,7 +47,7 @@ else
 				</li>
 			</ul>
 		</li>
-		<li><a href="#"><i class="fa fa-fw fa-shopping-cart"></i></a></li>
+		<li><a href="@Url.Action("Index","CartItems")"><i class="fa fa-fw fa-shopping-cart"></i></a></li>
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li style="margin-right:10px">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>

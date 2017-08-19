@@ -33,7 +33,7 @@
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Options<span class="caret"></span></a>
 							<ul class="dropdown-menu navFix">
-								<li>@Html.ActionLink("Add Items", "ItemAdd")</li>
+								<li>@Html.ActionLink("Item Controls", "../Items/ItemAdd")</li>
 							</ul>
 						</li>
 					}
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row navFix" style="position:fixed; top:50px; right:5%;" id="showHideDiv">
+	<div class="row navFix" style="position:fixed; top:50px; right:1%;" id="showHideDiv">
 		<button type = "button" class="btn btn-danger butOutline" onclick="navToggle()"><i class="fa fa-fw fa-caret-up" id="showHide"></i></button>
 	</div>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
@@ -64,25 +64,36 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>*@
-	<!--Modal frame-->
-	<div id="itemModal" class="modal fade" role="dialog">
+    </div>*@	
+	<!--Map Modal frame-->
+	<div id="mapModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content modalFix">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body modalFix">
-					<div id="map" style="min-height:300px; min-width:200px; display:none">
+					<div id="map" style="min-height:300px; min-width:200px;">
 					</div>
-					@Html.Partial("DetailsPartial")
 				</div>
 			</div>
 		</div>
 	</div>
 	<!--Body Content-->
     <div class="container body-content">
-        @RenderBody()
+		<div class="margPush">
+			@RenderBody()
+		</div>
+		@if (!User.IsInRole("Admin")) {
+			<div class="row">
+				<div class="subBox">
+					<h1>Subscribe</h1>
+					<p>To get special offers and <span style="color:#ff0000;">VIP</span> treatment:</p>
+					<input placeholder="E-mail" class="form-control formBott" />
+					<button class="btn btn-danger butOutline">Subscribe</button>
+				</div>
+			</div>
+		}
 		<div class="row botInfoBox">
 			<div class="col-md-4" style="text-align:center">
 				<h4>Contact</h4>
@@ -109,7 +120,7 @@
 				<p><i class="fa fa-fw fa-home"></i> Company Name</p>
 				<p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
 				<p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-				<p class="findLink"><a href="#" data-toggle="modal" data-target="#itemModal" onclick="modalPusher('map', 'map')"><i class="fa fa-fw fa-map-marker"></i>Find Store&nbsp;</a></p>
+				<p class="findLink"><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-fw fa-map-marker"></i>Find Store&nbsp;</a></p>
 				<h4>We accept</h4>
 				<p><i class="fa fa-fw fa-cc-amex"></i> American Express</p>
 				<p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>

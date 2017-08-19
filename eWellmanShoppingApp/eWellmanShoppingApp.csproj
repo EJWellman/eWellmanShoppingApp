@@ -202,6 +202,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708182029195_UpdateCartItemClass.cs" />
+    <Compile Include="Migrations\201708182029195_UpdateCartItemClass.Designer.cs">
+      <DependentUpon>201708182029195_UpdateCartItemClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CodeFirst\Item.CS" />
@@ -212,6 +216,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\images\banner.jpg" />
     <Content Include="Assets\images\helm1.jpg" />
     <Content Include="Assets\images\helm2.jpg" />
     <Content Include="Assets\images\helm3.jpg" />
@@ -232,7 +237,6 @@
     <Content Include="Assets\styles\css\bootstrap.min.css" />
     <Content Include="Assets\styles\css\font-awesome.css" />
     <Content Include="Assets\styles\css\font-awesome.min.css" />
-    <Content Include="Assets\styles\css\MyScripts.js" />
     <Content Include="Assets\styles\css\style.css" />
     <Content Include="Assets\styles\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\styles\fonts\glyphicons-halflings-regular.svg" />
@@ -376,6 +380,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708182029195_UpdateCartItemClass.resx">
+      <DependentUpon>201708182029195_UpdateCartItemClass.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

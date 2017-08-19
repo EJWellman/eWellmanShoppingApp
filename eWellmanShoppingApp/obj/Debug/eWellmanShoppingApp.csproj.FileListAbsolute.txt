@@ -94,3 +94,5 @@ C:\Users\kirea\documents\visual studio 2017\Projects\eWellmanShoppingApp\eWellma
 C:\Users\kirea\documents\visual studio 2017\Projects\eWellmanShoppingApp\eWellmanShoppingApp\obj\Debug\eWellmanShoppingApp.csprojResolveAssemblyReference.cache
 C:\Users\kirea\documents\visual studio 2017\Projects\eWellmanShoppingApp\eWellmanShoppingApp\obj\Debug\eWellmanShoppingApp.dll
 C:\Users\kirea\documents\visual studio 2017\Projects\eWellmanShoppingApp\eWellmanShoppingApp\obj\Debug\eWellmanShoppingApp.pdb
+C:\Users\kirea\documents\visual studio 2017\Projects\eWellmanShoppingApp\eWellmanShoppingApp\obj\Debug\eWellmanShoppingApp.Migrations.UpdateCartItemClass.resources
+C:\Users\kirea\documents\visual studio 2017\Projects\eWellmanShoppingApp\eWellmanShoppingApp\obj\Debug\eWellmanShoppingApp.csproj.GenerateResource.Cache

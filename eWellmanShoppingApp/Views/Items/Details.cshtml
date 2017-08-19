@@ -1,67 +1,86 @@
 ﻿@model eWellmanShoppingApp.Models.CodeFirst.Item
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Item Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.creationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.creationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.updatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.updatedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.desc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.desc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.mediaURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mediaURL)
-        </dd>
-
-    </dl>
+<div class="container" style="display:inline-block;">
+	<h3>@Model.name</h3>
+	<div class="row detHead">
+		<div class="col-md-4">
+			<img class="img-responsive" src="@Model.mediaURL"/>
+		</div>
+		<div class="col-md-offset-5 col-md-3" style="margin-top:25px;">
+				<h4>$@Model.price</h4>
+				<button class="btn btn-danger butOutline">Purchase</button>
+		</div>
+	@*</div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-	@Html.ActionLink("Back to List", "ItemAdd") |
-	@Html.ActionLink("Customer View", "Index")
-</p>
+<div class="container">
+	<div class="row" style="margin-top:25px;">*@
+		<div class="col-md-12">
+			<h5 style="font-weight:bold">@Model.desc</h5>
+		</div>
+	</div>
+</div>
+@if (User.IsInRole("Admin")) {
+	<div>
+		<h4>Item</h4>
+		<hr />
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.creationDate)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.creationDate)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.updatedDate)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.updatedDate)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.name)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.name)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.price)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.price)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.desc)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.desc)
+			</dd>
+
+			<dt>
+				@Html.DisplayNameFor(model => model.mediaURL)
+			</dt>
+
+			<dd>
+				@Html.DisplayFor(model => model.mediaURL)
+			</dd>
+
+		</dl>
+	</div>
+	<p>
+		@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+		@Html.ActionLink("Back to List", "ItemAdd") |
+		@Html.ActionLink("Customer View", "Index")
+	</p>
+}

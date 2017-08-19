@@ -3,7 +3,7 @@
 	margin: 30px 20px 0px 20px;
 }
 
-h3, h4, h5{
+h2, h3, h4, h5{
 	color:brown;
 }
 
@@ -45,6 +45,9 @@ h3, h4, h5{
 .texCen {
 	text-align:center;
 }
+.detHead{
+	max-height:450px;
+}
 /*CSS to hand all styling for the inventory/sales area*/
 /*Overrides the float:left that Bootstrap uses, and allows the images to properly align vertically in their rows*/
 /*Horizontal alignment is still handled by Bootstrap grids*/
@@ -78,6 +81,9 @@ h3, h4, h5{
 	color:#808080;
 	cursor:default;
 }
+.margPush {
+	margin-bottom: 25px;
+}
 /*
 ADDITION FROM SHOPPING CART #1
 */
@@ -101,7 +107,6 @@ ADDITION FROM SHOPPING CART #1
 	padding: 15px;
 	padding-top: 1px;
 	padding-bottom: 20px;
-	margin-top: 25px;
 }
 .botInfoBox {
 	background-color: #eeeec3;
@@ -132,8 +137,4 @@ ADDITION FROM SHOPPING CART #1
 	color: #fff;
 	background: none;
 	cursor: default;
-}
-/*Modifies the margins, used for input forms mostly*/
-.formBott {
-	margin-bottom: 10px;
 }

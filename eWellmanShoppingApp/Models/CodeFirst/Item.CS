@@ -16,7 +16,7 @@ namespace eWellmanShoppingApp.Models.CodeFirst {
 	public class CartItem {
 		public string customerID { get; set; }
 		public int id { get; set; }
-		public string itemID { get; set; }
+		public int itemID { get; set; }
 		public int count { get; set; }
 		public DateTime creationDate { get; set; }
 

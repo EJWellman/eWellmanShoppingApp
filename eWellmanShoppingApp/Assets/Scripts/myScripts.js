@@ -23,17 +23,6 @@
 function modalPusher(passedImg, passedDesc) {
 	var placeImgHere = document.getElementById("imgHold");
 	var placeDescHere = document.getElementById("descHold");
-	var placeMapHere = document.getElementById("map");
-	if (passedImg && passedDesc == 'map') {
-		placeMapHere.style.display = ("block");
-		placeImgHere.src = "";
-		placeDescHere.innerHTML = "";
-	}
-	else {
-		placeMapHere.style.display = ("none")
-		placeImgHere.src = passedImg;
-		placeDescHere.innerHTML = passedDesc.toString();
-	}
 }
 
 var map;
@@ -47,7 +36,7 @@ function initMap() {
 		position: coderF,
 		map: map
 	});
-	$("#itemModal").on("shown.bs.modal", function () {
+	$("#mapModal").on("shown.bs.modal", function () {
 		google.maps.event.trigger(map, "resize");
 		map.setCenter(marker.getPosition())
 	});

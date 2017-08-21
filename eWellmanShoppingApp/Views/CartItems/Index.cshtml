@@ -12,38 +12,44 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.customerID)
+            
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.itemID)
+            Item Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.count)
+            Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.creationDate)
+            Count
         </th>
+		<th>
+			Total Price
+		</th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in ViewBag.itemsInCart) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.customerID)
+			<img src="@item.item.mediaURL" style="width:125px; height:125px;"/>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.itemID)
+			@item.item.name
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.count)
+            @item.item.price
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.creationDate)
+            @item.count
         </td>
+		<td>
+			@item.unitTotal
+		</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Remove from Cart", "Delete", new { id=item.id })
         </td>
     </tr>
 }

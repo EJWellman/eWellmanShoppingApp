@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace eWellmanShoppingApp.Models.CodeFirst {
 	public class Item {
@@ -10,6 +11,7 @@ namespace eWellmanShoppingApp.Models.CodeFirst {
 		public DateTime? updatedDate { get; set; }
 		public string name { get; set; }
 		public decimal price { get; set; }
+		[AllowHtml]
 		public string desc { get; set; }
 		public string mediaURL { get; set; }
 	}

@@ -52,7 +52,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.desc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.desc, new { htmlAttributes = new { @class = "form-control" } })
+				@*<textarea id="editor" class="form-control" name="Description" rows="5">@Model.Description</textarea>*@
+				@Html.EditorFor(model => model.desc, new { htmlAttributes = new { @class = "form-control", @id = "editor", @rows = 5 } })
                 @Html.ValidationMessageFor(model => model.desc, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -80,4 +81,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+	<script src="~/Scripts/tinymce/tinymce.min.js"></script>
+	<script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+	<script type="text/javascript">$(function () {
+	tinymce.init({
+		selector: '#editor',
+		branding: false
+			});
+		});
+	</script>
 }

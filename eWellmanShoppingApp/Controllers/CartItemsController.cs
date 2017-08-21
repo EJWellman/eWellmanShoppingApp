@@ -10,18 +10,19 @@ using eWellmanShoppingApp.Models;
 using eWellmanShoppingApp.Models.CodeFirst;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using Microsoft.Ajax.Utilities;
 
 namespace eWellmanShoppingApp.Controllers
 {
-    public class CartItemsController : Controller
-    {
-		private ApplicationDbContext db = new ApplicationDbContext();
+    public class CartItemsController : Universal{
 
         // GET: CartItems
         public ActionResult Index()
         {
             return View(db.cartItems.ToList());
-        }
+		}
+
+		
 
         // GET: CartItems/Details/5
         public ActionResult Details(int? id)
@@ -35,14 +36,18 @@ namespace eWellmanShoppingApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View(cartItem);
+			//foreach (var row in db.cartItems.SqlQuery("SELECT * FROM CartItems WHERE customerID=@0")) {
+
+			//}
+
+			return View(cartItem);
         }
 
-        // GET: CartItems/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: CartItems/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: CartItems/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -67,7 +72,7 @@ namespace eWellmanShoppingApp.Controllers
 			db.cartItems.Add(cartItem);
 			db.SaveChanges();
 
-			return View();
+			return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
 		}
 
 		// GET: CartItems/Edit/5

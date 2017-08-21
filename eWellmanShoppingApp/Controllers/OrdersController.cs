@@ -11,9 +11,7 @@ using eWellmanShoppingApp.Models.CodeFirst;
 
 namespace eWellmanShoppingApp.Controllers
 {
-    public class OrdersController : Controller
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
+    public class OrdersController : Universal{
 
         // GET: Orders
         public ActionResult Index()

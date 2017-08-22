@@ -12,12 +12,11 @@
 		</div>
 		<div class="col-md-offset-5 col-md-3" style="margin-top:25px;">
 				<h4>$@Model.price</h4>
-				<button class="btn btn-danger butOutline">Purchase</button>
+				@using (Html.BeginForm("Create", "CartItems", new { idIn = Model.id }, FormMethod.Post)) {
+					@Html.AntiForgeryToken()
+					<input type="submit" class="btn btn-danger butOutline" value="Purchase" />
+				}
 		</div>
-	@*</div>
-</div>
-<div class="container">
-	<div class="row" style="margin-top:25px;">*@
 		<div class="col-md-12">
 			<h5 style="font-weight:bold">
 				@Html.Raw(Model.desc)</h5>

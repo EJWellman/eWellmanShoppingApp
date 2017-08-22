@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.CartItem>
-
+@using System.linq;
+@using System.Data.Entity;
 @{
     ViewBag.Title = "Index";
 }
@@ -28,30 +29,30 @@
 		</th>
         <th></th>
     </tr>
-
 @foreach (var item in ViewBag.itemsInCart) {
-    <tr>
-        <td>
-			<img src="@item.item.mediaURL" style="width:125px; height:125px;"/>
-        </td>
-        <td>
-			@item.item.name
-        </td>
-        <td>
-            @item.item.price
-        </td>
-        <td>
-            @item.count
-        </td>
-		<td>
-			@item.unitTotal
-		</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Remove from Cart", "Delete", new { id=item.id })
-        </td>
-    </tr>
+	using (Html.BeginForm("Edit", "CartItems", new { idIn = item.id, countIn = "countIn"}, FormMethod.Post)) {
+		@Html.AntiForgeryToken()
+		<tr>
+			<td>
+				<img src="@item.item.mediaURL" style="width:125px; height:125px;"/>
+			</td>
+			<td>
+				@item.item.name
+			</td>
+			<td>
+				@item.item.price
+			</td>
+			<td>
+				<input type="number" min="1" max="100" style="width:45px" value="@item.count" name="countIn" id="countIn" />
+			</td>
+			<td>
+				@item.unitTotal
+			</td>
+			<td>
+				<input type="submit" value="Update Quantity"/>
+				<input type="button" onclick="location.href='@Url.Action("Delete", "CartItems", new { id = item.id })'" value="Remove from Cart"/>
+			</td>
+		</tr>
+	}
 }
-
 </table>

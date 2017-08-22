@@ -1,45 +1,49 @@
 ﻿body{
-	background-color: beige;
+	background-color: #d7cec7;
 	margin: 30px 20px 0px 20px;
 }
 
 h2, h3, h4, h5{
-	color:brown;
+	color:#984B43;
 }
 
 /*CSS to handle all of the styling of the horizontal navigation bar at the top*/
 .navFix{
-	background-color: brown !important;
-	color:beige !important;
+	background-color: #565656 !important;
+	color:#d7cec7 !important;
 }
 .navFix li a{
-	background-color: brown !important;
-	color:beige !important;
+	background-color: #565656 !important;
+	color:#d7cec7 !important;
 }
 .navFix li a:hover,
-.navFix li a:active{
-	background-color:beige !important;
-	color:brown !important;
+.navFix li a:active {
+	background-color: #d7cec7 !important;
+	color: #314452 !important;
 }
 .navFix.dropdown-menu{
-	background-color:brown !important;
-	color:beige !important;
+	background-color:#565656 !important;
+	color:#d7cec7 !important;
 }
 .navFix.dropdown-menu li {
-	color:beige !important;
+	color:#d7cec7 !important;
 }
 .navFix.dropdown-menu ul{
-	color: beige !important;
+	color: #d7cec7 !important;
+}
+.navFix.dropdown-menu:hover,
+.navFix.dropdown-menu:active {
+	color: #d7cec7 !important;
 }
 .navFix.dropdown-menu li a:hover,
 .navFix.dropdown-menu li a:active{
-	color: beige !important;
+	color: #d7cec7 !important;
 }
 .navFix input{
 	min-width:150px;
 }
 .modalFix{
-	background-color:beige;
+	background-color:#d7cec7;
 }
 /*Navigation bar CSS ends here*/
 .texCen {
@@ -72,8 +76,8 @@ h2, h3, h4, h5{
 }
 .inv button{
 	border:none;
-	background-color:brown;
-	color:beige;
+	background-color:#565656;
+	color:#d7cec7;
 	vertical-align:bottom;
 }
 .inv button:hover{
@@ -95,30 +99,30 @@ ADDITION FROM SHOPPING CART #1
 	text-decoration: none;
 }
 /*Hover properties for navLinks*/
-.findLink a:hover {
-	background-color: #808080;
-	color: #fff;
-}
+	.findLink a:hover {
+		background-color: #565656;
+		color: #d7cec7;
+	}
 /*Styling for Subscription Box*/
 .subBox {
 	text-align:left;
-	background-color: brown;
+	background-color: #565656;
 	color: #fff;
 	padding: 15px;
 	padding-top: 1px;
 	padding-bottom: 20px;
 }
 .botInfoBox {
-	background-color: #eeeec3;
+	background-color: #B2ACA7;
 	line-height: 25px;
 }
 .footBox {
 	text-align: center;
-	background-color: brown;
+	background-color: #565656;
 	color: #fff;
 }
 .footBox a{
-	color:beige;
+	color:#d7cec7;
 	text-decoration:none;
 }
 /*Adds an outline to buttons*/
@@ -128,13 +132,13 @@ ADDITION FROM SHOPPING CART #1
 }
 /*Reskins the Bootstrap 'danger button'*/
 .butOutline.btn-danger {
-	background: #ff0000;
-	border: 3px solid #ff0000;
+	background: #565656;
+	border: 3px solid #565656;
 	color: #fff;
 }
 .butOutline.btn-danger:hover,
 .butOutline.btn-danger:active {
 	color: #fff;
-	background: none;
+	background: #314452;
 	cursor: default;
 }

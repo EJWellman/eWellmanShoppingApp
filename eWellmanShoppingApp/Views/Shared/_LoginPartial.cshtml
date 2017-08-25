@@ -21,7 +21,9 @@
 				</li>
 			</ul>
 		</li>
-		<li><a href="@Url.Action("Index","CartItems")"><i class="fa fa-fw fa-shopping-cart"></i>@if (ViewBag.itemsInCart.Count > 0) { @ViewBag.itemsInCart.Count}</a></li>
+			<li>
+				<a href="@Url.Action("Index", "CartItems")"><i class="fa fa-fw fa-shopping-cart"></i>@if (ViewBag.itemsInCart.Count > 0) { @ViewBag.itemsInCart.Count}</a>
+			</li>
 		<li>
 			<a href="@Url.Action("Index","Manage")" title="Manage">Hello, @ViewBag.firstName!</a>
 			@*@Html.ActionLink("Hello " + ViewBag.firstName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
@@ -48,7 +50,6 @@ else
 				</li>
 			</ul>
 		</li>
-		<li><a href="@Url.Action("Index","CartItems")"><i class="fa fa-fw fa-shopping-cart"></i></a></li>
 		<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 		<li style="margin-right:10px">@Html.ActionLink("Log in", "Login", "Account", routeValues: Request.Url.GetLeftPart(UriPartial.Path), htmlAttributes: new { id = "loginLink" })</li>
 	</ul>

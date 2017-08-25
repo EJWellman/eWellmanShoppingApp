@@ -1,0 +1,169 @@
+﻿body{
+	background-color: #d7cec7;
+	/*margin: 40px 20px 0px 20px;*/
+}
+
+.bodyContent {
+	margin-top: 40px;
+}
+	h2, h3, h4, h5{
+	color:#984B43;
+}
+
+/*CSS to handle all of the styling of the horizontal navigation bar at the top*/
+.navFix{
+	background-color: #565656 !important;
+	color:#d7cec7 !important;
+}
+.navFix li a{
+	background-color: #565656 !important;
+	color:#d7cec7 !important;
+}
+.navFix li a:hover,
+.navFix li a:active {
+	background-color: #d7cec7 !important;
+	color: #314452 !important;
+}
+.navFix.dropdown-menu{
+	background-color:#565656 !important;
+	color:#d7cec7 !important;
+}
+.navFix.dropdown-menu li {
+	color:#d7cec7 !important;
+}
+.navFix.dropdown-menu ul{
+	color: #d7cec7 !important;
+}
+.navFix.dropdown-menu:hover,
+.navFix.dropdown-menu:active {
+	color: #d7cec7 !important;
+}
+.navFix.dropdown-menu li a:hover,
+.navFix.dropdown-menu li a:active{
+	color: #d7cec7 !important;
+}
+.navFix input{
+	min-width:150px;
+}
+.modalFix{
+	background-color:#d7cec7;
+}
+/*Navigation bar CSS ends here*/
+.texCen {
+	text-align:center;
+}
+.detHead{
+	max-height:450px;
+}
+/*CSS to hand all styling for the inventory/sales area*/
+/*Overrides the float:left that Bootstrap uses, and allows the images to properly align vertically in their rows*/
+/*Horizontal alignment is still handled by Bootstrap grids*/
+.dummyCol{
+	display:inline;
+	float:none;
+	vertical-align:middle;
+	margin-right:4px;
+	height:0px;
+}
+.vCenter {
+	display:inline-block;
+	vertical-align: middle;
+	float:none;
+	margin-right:-4px;
+}
+.itemHack h3{
+	height:45px;
+}
+.vCenter h3{
+	vertical-align:top;
+}
+.inv button{
+	border:none;
+	background-color:#565656;
+	color:#d7cec7;
+	vertical-align:bottom;
+}
+.inv button:hover{
+	background-color:#000;
+	color:#808080;
+	cursor:default;
+}
+.margPush {
+	margin-bottom: 25px;
+}
+/*
+ADDITION FROM SHOPPING CART #1
+*/
+/*For standard Navigation Bar links*/
+/*For Store Finder Link*/
+.findLink a {
+	display: inline-block;
+	color: #000;
+	text-decoration: none;
+}
+/*Hover properties for navLinks*/
+	.findLink a:hover {
+		background-color: #565656;
+		color: #d7cec7;
+	}
+/*Styling for Subscription Box*/
+.subBox {
+	text-align:left;
+	background-color: #565656;
+	color: #fff;
+	padding: 15px;
+	padding-top: 1px;
+	padding-bottom: 20px;
+}
+.botInfoBox {
+	background-color: #B2ACA7;
+	line-height: 25px;
+}
+.footBox {
+	text-align: center;
+	background-color: #565656;
+	color: #fff;
+}
+.footBox a{
+	color:#d7cec7;
+	text-decoration:none;
+}
+/*Adds an outline to buttons*/
+.butOutline {
+	border-radius: 0px;
+	transition: all 0.3s;
+}
+/*Reskins the Bootstrap 'danger button'*/
+.butOutline.btn-danger {
+	background: #565656;
+	border: 3px solid #565656;
+	color: #fff;
+}
+.butOutline.btn-danger:hover,
+.butOutline.btn-danger:active {
+	color: #fff;
+	background: #314452;
+	cursor: default;
+}
+
+/*Form upload fixer*/
+.inputFile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputFile + label {
+	/*font-size: 1.25em;
+	font-weight: 700;
+	color: white;
+	background-color: black;
+	display: inline-block;*/
+	cursor: pointer;
+}
+/*.inputFile:focus + label,
+.inputFile + label:hover {
+	background-color: red;
+}*/

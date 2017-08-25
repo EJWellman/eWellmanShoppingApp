@@ -1,0 +1,83 @@
+﻿@model eWellmanShoppingApp.Models.CodeFirst.Item
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Items", FormMethod.Post, new { enctype = "Multipart/form-data" })) {
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Item</h4>
+        <hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			@Html.HiddenFor(model => model.id)
+			@Html.HiddenFor(model => model.creationDate)
+			@Html.HiddenFor(model => model.updatedDate)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+				@*<textarea id="editor" class="form-control" name="Description" rows="5">@Model.Description</textarea>*@
+				@Html.EditorFor(model => model.desc, new { htmlAttributes = new { @class = "form-control", @id = "editor", @rows = 5 } })
+                @Html.ValidationMessageFor(model => model.desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mediaURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+				<p>Choose an existing file</p>
+				@Html.DropDownList("image2", ((SelectList)ViewData["ImageList"]), "", new { name = "image2" })
+				<p>Or upload a new one</p>
+				<input type="file" name="image" id="file" class="inputFile" />
+				<label for="file" class="btn btn-default">Choose a File</label>
+                @*@Html.EditorFor(model => model.mediaURL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mediaURL, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "ItemAdd") |
+	@Html.ActionLink("Customer View", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+	<script src="~/Scripts/tinymce/tinymce.min.js"></script>
+	<script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+	<script type="text/javascript">$(function () {
+	tinymce.init({
+		selector: '#editor',
+		branding: false
+			});
+		});
+	</script>
+}

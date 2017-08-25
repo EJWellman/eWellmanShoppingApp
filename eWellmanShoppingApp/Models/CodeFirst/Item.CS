@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,7 +8,9 @@ using System.Web.Mvc;
 namespace eWellmanShoppingApp.Models.CodeFirst {
 	public class Item {
 		public int id { get; set; }
+		[Column(TypeName = "DateTime2")]
 		public DateTime creationDate { get; set; }
+		[Column(TypeName = "DateTime2")]
 		public DateTime? updatedDate { get; set; }
 		public string name { get; set; }
 		public decimal price { get; set; }
@@ -20,7 +23,8 @@ namespace eWellmanShoppingApp.Models.CodeFirst {
 		public int id { get; set; }
 		public int itemID { get; set; }
 		public int count { get; set; }
-		public DateTime creationDate { get; set; }
+		[Column(TypeName = "DateTime2")]
+		public DateTime? creationDate { get; set; }
 
 		public virtual Item item { get; set; }
 		public virtual ApplicationUser customer { get; set;}

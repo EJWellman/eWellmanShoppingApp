@@ -9,7 +9,7 @@
 </head>
 <body>
 	@foreach(var item in Model) {
-	<div class="col-sm-3 vCenter itemHack">
+	<div class="col-xs-6 col-md-4 col-lg-3 vCenter itemHack">
 		<h3>@item.name</h3>
 		<a href="@Url.Action("Details", "Items", new { id=item.id })"><img class="img-responsive" src="@item.mediaURL" /></a>
 		<h5>$@item.price</h5>
@@ -19,19 +19,5 @@
 		}
 	</div>
 	}
-	<!--Modal frame-->
-	<div id="itemModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modalFix">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body modalFix">
-					@Html.Partial("DetailsPartial", new eWellmanShoppingApp.Models.CodeFirst.Item())
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--Container for the inventory/-->
 </body>
 

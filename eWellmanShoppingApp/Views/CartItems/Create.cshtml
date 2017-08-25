@@ -15,13 +15,6 @@
         <h4>CartItem</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.customerID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.customerID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.customerID, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.itemID, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -36,14 +29,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.count, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.count, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.creationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.creationDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.creationDate, "", new { @class = "text-danger" })
             </div>
         </div>
 

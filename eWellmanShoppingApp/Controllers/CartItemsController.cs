@@ -59,10 +59,13 @@ namespace eWellmanShoppingApp.Controllers
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 			Item itemIn = db.items.Find(idIn);
+			var user = db.Users.Find(User.Identity.GetUserId());
 			if (itemIn == null) {
 				return HttpNotFound();
 			}
-			var user = db.Users.Find(User.Identity.GetUserId());
+			if (user == null) {
+				return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+			}
 			CartItem cartItem = new CartItem() {
 				count = 1,
 				creationDate = DateTime.Now,

@@ -2,20 +2,16 @@
 
 @{
 	ViewBag.Title = "Store";
-}	
-<head>
-	<meta charset="utf-8" />
-	
-</head>
+}
 <body>
 	@foreach(var item in Model) {
-	<div class="col-xs-6 col-md-4 col-lg-3 vCenter itemHack">
-		<h3>@item.name</h3>
-		<a href="@Url.Action("Details", "Items", new { id=item.id })"><img class="img-responsive" src="@item.mediaURL" /></a>
+	<div class="col s6 m4 l3" style="vertical-align:middle; display:inline-block;">
+		<h2 style="height:45px; text-overflow: ellipsis;" class="flow-text">@item.name</h2>
+		<a href="@Url.Action("Details", "Items", new { id=item.id })"><img class="responsive-img" src="@item.mediaURL" /></a>
 		<h5>$@item.price</h5>
 		@using (Html.BeginForm("Create", "CartItems", new { idIn = item.id }, FormMethod.Post)){
 		@Html.AntiForgeryToken()
-		<input type="submit" class="btn btn-danger butOutline" value="Purchase"/>
+		<input type="submit" class="btn waves-effect lime darken-3" value="Purchase"/>
 		}
 	</div>
 	}

@@ -229,6 +229,8 @@
     <Content Include="Assets\images\helm7.jpg" />
     <Content Include="Assets\images\helm8.jpg" />
     <Content Include="Assets\Scripts\jquery-3.2.1.js" />
+    <Content Include="Assets\Scripts\materialize.js" />
+    <Content Include="Assets\styles\css\materialize.css" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
@@ -494,7 +496,6 @@
     <Content Include="Views\Items\Delete.cshtml" />
     <Content Include="Views\Items\Details.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
-    <Content Include="Views\Items\IndexGenerated.cshtml" />
     <Content Include="Views\CartItems\Create.cshtml" />
     <Content Include="Views\CartItems\Delete.cshtml" />
     <Content Include="Views\CartItems\Details.cshtml" />

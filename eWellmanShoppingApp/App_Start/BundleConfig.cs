@@ -23,14 +23,14 @@ namespace eWellmanShoppingApp {
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",
 					  "~/Content/site.css"));
-			bundles.Add(new ScriptBundle("~/Assets/Scripts").Include(
+			bundles.Add(new ScriptBundle("~/Bundles/scripts.js").Include(
 				"~/Assets/Scripts/jquery-3.2.1.js",
 				"~/Assets/Scripts/MyScripts.js",
 				"~/Assets/Scripts/bootstrap.min.js"));
 
 
 
-			bundles.Add(new StyleBundle("~/Assets/styles").Include(
+			bundles.Add(new StyleBundle("~/Bundles/styles.css").Include(
 				"~/Assets/Styles/css/bootstrap.css",
 				"~/Assets/styles/css/style.css",
 				"~/Assets/styles/css/font-awesome.css"));

@@ -6,7 +6,10 @@
     <title>Erics Helmets - @ViewBag.Title</title>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6JeNWKkz1cp-rgpRPjiuR1bfB5oMOxIc&callback=initMap"
 			async defer></script>
-	@Styles.Render("~/Assets/styles")
+	<link href="~/Assets/styles/css/bootstrap.css" rel="stylesheet" />
+	<link href="~/Assets/styles/css/font-awesome.css" rel="stylesheet" />
+	<link href="~/Assets/styles/css/style.css" rel="stylesheet" />
+	@*@Styles.Render("~/Bundles/styles.css")*@
     @*@Scripts.Render("~/bundles/modernizr")*@
 
 </head>
@@ -136,7 +139,10 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>*@
     </div>
-	@Scripts.Render("~/Assets/Scripts")
+	<script src="~/Assets/Scripts/jquery-3.2.1.js"></script>
+	<script src="~/Assets/Scripts/bootstrap.js"></script>
+	<script src="~/Assets/Scripts/myScripts.js"></script>
+	@*@Scripts.Render("~/Bundles/scripts.js")*@
 	@RenderSection("scripts", required: false)
 </body>
 </html>

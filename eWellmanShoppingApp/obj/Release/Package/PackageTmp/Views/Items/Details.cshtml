@@ -4,21 +4,21 @@
 	ViewBag.Title = "Item Details";
 }
 
-<div class="container" style="display:inline-block;">
-	<h3>@Model.name</h3>
-	<div class="row detHead">
-		<div class="col-md-4">
-			<img class="img-responsive" src="@Model.mediaURL"/>
+<div style="display:inline-block;">
+	<h4>@Model.name</h4>
+	<div class="row">
+		<div class="col m4">
+			<img class="responsive-img" src="@Model.mediaURL"/>
 		</div>
-		<div class="col-md-offset-5 col-md-3" style="margin-top:25px;">
+		<div class="col offset-m5 m3" @*style="margin-top:25px;"*@>
 				<h4>$@Model.price</h4>
 				@using (Html.BeginForm("Create", "CartItems", new { idIn = Model.id }, FormMethod.Post)) {
 					@Html.AntiForgeryToken()
-					<input type="submit" class="btn btn-danger butOutline" value="Purchase" />
+					<input type="submit" class="btn lime darken-3" value="Purchase" />
 				}
 		</div>
-		<div class="col-md-12">
-			<h5 style="font-weight:bold">
+		<div class="col m10">
+			<h5 class="flow-text">
 				@Html.Raw(Model.desc)</h5>
 		</div>
 	</div>

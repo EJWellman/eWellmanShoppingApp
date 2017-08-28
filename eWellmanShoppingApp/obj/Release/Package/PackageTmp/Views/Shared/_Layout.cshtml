@@ -4,145 +4,158 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erics Helmets - @ViewBag.Title</title>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6JeNWKkz1cp-rgpRPjiuR1bfB5oMOxIc&callback=initMap"
-			async defer></script>
-	<link href="~/Assets/styles/css/bootstrap.css" rel="stylesheet" />
-	<link href="~/Assets/styles/css/font-awesome.css" rel="stylesheet" />
-	<link href="~/Assets/styles/css/style.css" rel="stylesheet" />
-	@*@Styles.Render("~/Bundles/styles.css")*@
-    @*@Scripts.Render("~/bundles/modernizr")*@
-
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="~/Assets/styles/css/materialize.css" rel="stylesheet" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	@*<script type="text/javascript" src="~/Assets/Scripts/jquery-3.2.1.js"></script>*@
+	<script type="text/javascript" src="~/Assets/Scripts/materialize.js"></script>
+	<style>
+		ul.dropdown-content.select-dropdown li span {
+			color: #000; /* no need for !important :) */
+		}
+	</style>
 </head>
 <body>
-	<div class="navbar navbar-default navbar-fixed-top" id="hidey" style="display:block;">
-		<div class="container-fluid navFix">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collNav"><i class="fa fa-fw fa-bars"></i></button>
-			</div>
-			<div class="collapse navbar-collapse" id="collNav">
-				<ul class="nav navbar-nav navbar-left">
-					<li><a href="~/Home">Home</a></li>
-					<li><a href="~/Items">Helmets</a></li>
-					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Parts<span class="caret"></span></a>
-						<ul class="dropdown-menu navFix">
-							<li><a href="#">Strapping</a></li>
-							<li><a href="#">Rivets</a></li>
-							<li><a href="#">Brasses</a></li>
-							<li><a href="#">Aventails</a></li>
-						</ul>
-					</li>
-					@if (User.IsInRole("Admin")) {  //Only shows up if logged in user is part of the Admin group.
-						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin Options<span class="caret"></span></a>
-							<ul class="dropdown-menu navFix">
-								<li>@Html.ActionLink("Item Controls", "../Items/ItemAdd")</li>
-							</ul>
-						</li>
-					}
-				</ul>
-				@Html.Partial("_LoginPartial")
+	<!--Nav Bar-->
+	<header>
+		<ul class="dropdown-content grey darken-2 z-depth-5" id="dropdownParts">
+			<li><a href="#">Rivets</a></li>
+			<li><a href="#">Liners</a></li>
+			<li><a href="#">Straps</a></li>
+		</ul>
+		@if (User.IsInRole("Admin")) {
+		<ul class="dropdown-content grey darken-2 z-depth-5" id="adminDrop">
+			<li>@Html.ActionLink("Item Controls", "../Items/ItemAdd")</li>
+		</ul>
+		}
+		<div class="navbar-fixed">
+			<nav>
+				<div class="nav-wrapper grey darken-3">
+					<a href="#" data-activates="sideNav" class="button-collapse"><i class="material-icons">menu</i></a>
+					<ul id="nav-mobile" class="left hide-on-med-and-down">
+						<li><a href="@Url.Action("Index","Home")">Home</a></li>
+						<li><a href="@Url.Action("Index","Items")">Items</a></li>
+						<li><a class="dropdown-button" href="#" data-activates="dropdownParts">Parts<i class="material-icons right">arrow_drop_down</i></a></li>
+						@if (User.IsInRole("Admin")) {  //Only shows up if logged in user is part of the Admin group.
+							<li><a class="dropdown-button" href="#" data-activates="adminDrop">Admin Options<i class="material-icons right">arrow_drop_down</i></a></li>
+						}
+					</ul>
+					@Html.Partial("_LoginPartial")
+				</div>
+			</nav>
+		</div>
+		<ul class="side-nav" id="sideNav">
+			<li><a href="@Url.Action("Index","Home")">Home</a></li>
+			<li><a href="@Url.Action("Index","Items")">Items</a></li>
+			<li class="divider"></li>
+			<li><a href="#">Rivets</a></li>
+			<li><a href="#">Liners</a></li>
+			<li><a href="#">Straps</a></li>
+			@if (User.IsInRole("Admin")) {
+				<li class="divider"></li>
+				<li>Admin Options</li>
+				<li class="divider"></li>
+				<li>@Html.ActionLink("Item Controls", "../Items/ItemAdd")</li>
+			}
+			@if (Request.IsAuthenticated) {
+				<li class="divider"></li>
+				<li><a href="@Url.Action("Index","CartItems")" class="valign-wrapper">@if (ViewBag.itemsInCart.Count > 0) { @ViewBag.itemsInCart.Count}<i style="display:inline" class="material-icons">shopping_cart</i></a></li>
+			}
+			<li><a href="#"><i class="small material-icons">shopping_cart</i>Cart</a></li>
+		</ul>
+	</header>
+	<!--Body Content-->
+	<main class="brown lighten-4">
+		<div class="container">
+			<div class="row valign-wrapper">
+				<div class="col s12" style="max-width:1280px;">
+					@RenderBody()
+				</div>
 			</div>
 		</div>
+	</main>
+		
+	<!--Footer Modal -->
+	<div id="footerModal" class="modal bottom-sheet">
+		<div class="modal-content grey darken-3">
+			<ul class="collapsible" data-collapsible="accordian">
+				<li>
+					<div class="collapsible-header grey darken-2 white-text"><i class="material-icons">info</i>Company Information</div>
+					<div class="collapsible-body white-text">
+						<div class="container">
+							<div class="row">
+								<div class="col l4 s12 center">
+									<h5>About</h5>
+									<p><a href="#">About Us</a></p>
+									<p><a href="#">Careers with Us</a></p>
+									<p><a href="#">Support</a></p>
+									<p><a href="#">Shipment</a></p>
+									<p><a href="#">Gift Card</a></p>
+								</div>
+								<div class="col l4 s12 center">
+									<h5 class="white-text">Store</h5>
+									<p class="white-text"><i class="material-icons">home</i>Company Name</p>
+									<p><i class="material-icons">phone</i>0044123123</p>
+									<p><i class="material-icons">email</i>ex@mail.com</p>
+									<h5>We accept</h5>
+									<p><i class="material-icons">credit_card</i>Credit Card</p>
+								</div>
+								<div class="col l4 s12 center">
+									<h5>Send us a message!</h5>
+									<input placeholder="Name" id="custName" type="text" class="validate" />
+									<input placeholder="Email" id="custEmail" type="email" class="validate" />
+									<div class="input-field col s12">
+										<textarea id="custMessage" class="materialize-textarea" data-length="220"></textarea>
+										<label for="custMessage">Type your message here, press Enter to send.</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<!--Map goes here-->
+				<li>
+					<div class="collapsible-header grey darken-2 white-text"><i class="material-icons">map</i>Find Us!</div>
+					<div class="collapsible-body">
+						<div class="row">
+							<div class="col s12 center">
+								<div>
+									<iframe frameborder="0" style="border:0; width:100%; min-height:300px" "
+											src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJF1gfEDkHU4gRKHGVkH07WGQ&key=AIzaSyBdg4p73nm890ZXt5-w8rriEkUz3SjljwM"
+											allowfullscreen>
+									</iframe>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div class="row navFix" style="position:fixed; top:50px; right:1%;" id="showHideDiv">
-		<button type = "button" class="btn btn-danger butOutline" onclick="navToggle()"><i class="fa fa-fw fa-caret-up" id="showHide"></i></button>
-	</div>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>*@	
-	<!--Map Modal frame-->
-	<div id="mapModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content modalFix">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body modalFix">
-					<div id="map" style="min-height:300px; min-width:200px;">
+	<!--Perm Footer-->
+	<footer class="page-footer" style="padding-top: 0px;">
+		<div class="footer-copyright grey darken-3">
+			<div class="container">
+				<div class="row" style="margin-bottom:0px;">
+					<div class="col s4 center">
+						<!--Footer Modal Trigger-->
+						<button data-target="footerModal" class="btn modal-trigger lime darken-3">About</button>
+					</div>
+					<div class="col s4 center">
+						© 2017 Copyright Eric Wellman
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!--Body Content-->
-    <div class="container bodyContent" id="bodyContent">
-		<div class="margPush">
-			@RenderBody()
-		</div>
-		@if (!User.IsInRole("Admin")) {
-			<div class="row">
-				<div class="subBox">
-					<h1>Subscribe</h1>
-					<p>To get special offers and <span style="color:#ff0000;">VIP</span> treatment:</p>
-					<input placeholder="E-mail" class="form-control formBott" />
-					<button class="btn btn-danger butOutline">Subscribe</button>
-				</div>
-			</div>
-		}
-		<div class="row botInfoBox">
-			<div class="col-md-4" style="text-align:center">
-				<h4>Contact</h4>
-				<p>Questions? Go ahead.</p>
-				<input placeholder="Name" class="form-control formBott" />
-				<input placeholder="E-mail" class="form-control formBott" />
-				<input placeholder="Subject" class="form-control formBott" />
-				<input placeholder="Message" class="form-control formBott" />
-				<button class="btn btn-danger butOutline form-control">Send</button>
-			</div>
-			<div class="col-md-4" style="text-align:center">
-				<h4>About</h4>
-				<p><a href="#">About Us</a></p>
-				<p><a href="#">Careers with Us</a></p>
-				<p><a href="#">Support</a></p>
-				<p><a href="#">Shipment</a></p>
-				<p><a href="#">Payment</a></p>
-				<p><a href="#">Gift Card</a></p>
-				<p><a href="#">Return</a></p>
-				<p><a href="#">Help</a></p>
-			</div>
-			<div class="col-md-3" style="text-align:center">
-				<h4>Store</h4>
-				<p><i class="fa fa-fw fa-home"></i> Company Name</p>
-				<p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-				<p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-				<p class="findLink"><a href="#" data-toggle="modal" data-target="#mapModal"><i class="fa fa-fw fa-map-marker"></i>Find Store&nbsp;</a></p>
-				<h4>We accept</h4>
-				<p><i class="fa fa-fw fa-cc-amex"></i> American Express</p>
-				<p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12 footBox">
-				<p>Powered by <a href="http://www.coderfoundry.com/">CoderFoundry</a></p>
-				<p>&copy; @DateTime.Now.Year Copyright Eric Wellman</p>
-			</div>
-		</div>
-        @*<footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
-    </div>
-	<script src="~/Assets/Scripts/jquery-3.2.1.js"></script>
-	<script src="~/Assets/Scripts/bootstrap.js"></script>
-	<script src="~/Assets/Scripts/myScripts.js"></script>
-	@*@Scripts.Render("~/Bundles/scripts.js")*@
-	@RenderSection("scripts", required: false)
+	</footer>
+	<!--Script loader-->
+	<script>
+		$(document).ready(function () {
+			$(".button-collapse").sideNav();
+			$('.modal').modal();
+			$('.modal-trigger').Modal();
+		});
+		@RenderSection("scripts", required: false)
+	</script>
 </body>
 </html>

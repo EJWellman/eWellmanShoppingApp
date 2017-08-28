@@ -5,9 +5,11 @@
 }
 <body>
 	@foreach(var item in Model) {
-	<div class="col s6 m4 l3" style="vertical-align:middle; display:inline-block;">
-		<h2 style="height:45px; text-overflow: ellipsis;" class="flow-text">@item.name</h2>
-		<a href="@Url.Action("Details", "Items", new { id=item.id })"><img class="responsive-img" src="@item.mediaURL" /></a>
+	<div class="col s6 m4 l4 xl3" style="vertical-align:middle; display:inline-block;">
+		<h2 style="height:2.25em;" class="flow-text">@item.name</h2>
+		<div class="col s12">
+			<a href="@Url.Action("Details", "Items", new { id=item.id })"><img class="responsive-img" src="@item.mediaURL" /></a>
+		</div>
 		<h5>$@item.price</h5>
 		@using (Html.BeginForm("Create", "CartItems", new { idIn = item.id }, FormMethod.Post)){
 		@Html.AntiForgeryToken()

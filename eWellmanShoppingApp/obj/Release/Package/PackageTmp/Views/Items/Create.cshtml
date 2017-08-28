@@ -40,17 +40,23 @@
 		</div>
 
 		<div class="form-group">
-			@Html.Label("Image Upload", htmlAttributes: new { @class = "control-label col-md-2" })
-			@*@Html.LabelFor(model => model.mediaURL, htmlAttributes: new { @class = "control-label col-md-2" })*@
+			@Html.LabelFor(model => model.mediaURL, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				<p>Choose an existing file</p>
-				@Html.DropDownList("image2", ((SelectList)ViewData["ImageList"]), "", new { name = "image2" })
-				<p>Or upload a new one</p>
-				<input type="file" name="image" id="file" class="inputFile" />
-				<label for="file" class="btn btn-default">Choose a File</label>
-				@*@Html.Editor("image", htmlAttributes: new { @class = "form-control", @type="file", @name="image"})*@
-				@*@Html.EditorFor(model => model.mediaURL, new { htmlAttributes = new { @class = "form-control" } })*@
+				<div class="col m4">
+					<p>Choose an existing file</p>
+					@Html.DropDownList("image2", ((SelectList)ViewData["ImageList"]), "", new { name = "image2" })
+				</div>
+				<div class="file-field input-field col m8">
+					<p style="margin-top: 0px;">Or upload a new one</p>
+					<div class="btn lime darken-3">
+						<span>File</span>
+						<input type="file" name="image" id="file">
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text" name="image" id="file">
+					</div>
 				@Html.ValidationMessage("image", "", new { @class = "text-danger" })
+				</div>
 			</div>
 		</div>
 
@@ -69,13 +75,19 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
+	<script>
+		$(document).ready(function () {
+			$('select').material_select();
+		});
+	</script>
 	<script src="~/Scripts/tinymce/tinymce.min.js"></script>
 	<script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
-	<script type="text/javascript">$(function () {
+	<script type="text/javascript">
+$(function () {
 			tinymce.init({
 				selector: '#editor',
 				branding: false
-			});	
+			});
 		});
 	</script>
 }

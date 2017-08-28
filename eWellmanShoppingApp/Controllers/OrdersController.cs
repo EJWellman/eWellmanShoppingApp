@@ -58,7 +58,7 @@ namespace eWellmanShoppingApp.Controllers
         }
 
         // GET: Orders/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string streetIn, string cityIn, string stateIn, string zipIn, string countryIn, string phoneIn, string detailsIn)
         {
             if (id == null)
             {

@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.CartItem>*@
-@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.Order>
+﻿@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.Order>
 
 @{
     ViewBag.Title = "Check Out";
@@ -35,24 +34,23 @@
 		<td>Total: @ViewBag.orderTotal</td>
 	</tr>
 </table>
-"addrSt,addrCity,addrState,addrZip,addrCountry,phone,orderDetails"
 
-@using (Html.BeginForm("Create", "Orders", FormMethod.Post, new { enctype = "Multipart/form-data" })) {
+@using (Html.BeginForm("Verify", "Orders", FormMethod.Get)) {
 	@Html.AntiForgeryToken()
 
-<div class="row grey darken-3 white-text" style="padding-left:10px; padding-right:10px; padding-top:5px">
-	<input placeholder="Street Address" type="text" name="streetIn" class="col s7" />
-	<input placeholder="City" type="text" name="cityIn" class="col offset-s1 s4"/>
-	<input placeholder="State" type="text" name="stateIn" class="col s2" />
-	<input placeholder="Zip Code" type="text" name="zipIn" class="col offset-s1 s2" />
-	<input placeholder="Country" type="text" name="countryIn" class="col offset-s1 s6" />
-	<input placeholder="Phone Number" type="tel" name="phoneIn" class="col s4" />
-	<div class="input-field col s12">
-		<textarea id="orderDetails" class="materialize-textarea" data-length="260" name="detailsIn"></textarea>
-		<label for="orderDetails">Type any special instructions here.</label>
-	</div>
-	<div class="col s12" style="margin-bottom:20px">
-	<input type="submit" class="btn lime darken-3" value="Check Out"/>
+	<div class="row grey darken-3 white-text" style="padding-left:10px; padding-right:10px; padding-top:5px">
+		<input placeholder="Street Address" type="text" name="streetIn" class="col s7" />
+		<input placeholder="City" type="text" name="cityIn" class="col offset-s1 s4"/>
+		<input placeholder="State" type="text" name="stateIn" class="col s2" />
+		<input placeholder="Zip Code" type="text" name="zipIn" class="col offset-s1 s2" />
+		<input placeholder="Country" type="text" name="countryIn" class="col offset-s1 s6" />
+		<input placeholder="Phone Number" type="tel" name="phoneIn" class="col s4" />
+		<div class="input-field col s12">
+			<textarea id="orderDetails" class="materialize-textarea" data-length="260" name="detailsIn"></textarea>
+			<label for="orderDetails">Type any special instructions here.</label>
+		</div>
+		<div class="col s12" style="margin-bottom:20px">
+			<input type="submit" class="btn lime darken-3" value="Check Out"/>
+		</div>
 	</div>
 }
-</div>

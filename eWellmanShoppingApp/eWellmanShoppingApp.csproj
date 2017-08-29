@@ -512,6 +512,8 @@
     <Content Include="Views\OrderItems\Edit.cshtml" />
     <Content Include="Views\OrderItems\Index.cshtml" />
     <Content Include="Views\Items\ItemAdd.cshtml" />
+    <Content Include="Views\Orders\Completion.cshtml" />
+    <Content Include="Views\Orders\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

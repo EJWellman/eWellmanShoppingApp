@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
 }
 
+@if (ViewBag.orderTotal != 0) {
 <table class="table">
     <tr>
         <th>
@@ -51,5 +52,9 @@
 	}
 }
 </table>
-
-<a class="btn lime darken-3" href="@Url.Action("Index","Orders")">Check Out</a>
+	<a class="btn lime darken-3" href="@Url.Action("Index", "Orders")">Check Out</a>
+}
+@if (ViewBag.orderTotal == 0) {
+	<h3>Your cart is empty!</h3>
+	<h4>Maybe you should take another look around, and see if there's anything you may have missed?</h4>
+}

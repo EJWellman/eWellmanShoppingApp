@@ -40,7 +40,7 @@ namespace eWellmanShoppingApp.Controllers
 
 			//}
 
-			return View(cartItem);
+			return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
 		}
 
 		//// GET: CartItems/Create

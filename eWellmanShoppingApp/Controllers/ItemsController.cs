@@ -23,12 +23,6 @@ namespace eWellmanShoppingApp.Controllers
 			return View(db.items.ToList());
 		}
 
-		public ActionResult State() {
-				ViewBag.imageList = new SelectList(db.items, "id", "mediaURL");
-			return View();
-
-		}
-
 		// GET: Items/Details/5
 		public ActionResult Details(int? id)
 		{
@@ -43,24 +37,6 @@ namespace eWellmanShoppingApp.Controllers
 			}
 			return View(item);
 		}
-		// GET: Items/Details/Partial
-		public ActionResult DetailsPartial(int? id) {
-			if (id == null) {
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Item itemToPass = db.items.Find(id);
-			return PartialView(itemToPass);
-		}
-		//public ActionResult DetailsPartial(int? id) {
-		//	if (id == null) {
-		//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-		//	}
-		//	Item item = db.items.Find(id);
-		//	if (item == null) {
-		//		return HttpNotFound();
-		//	}
-		//	return View(item);
-		//}
 
 		// GET: Items/Create
 		[Authorize(Roles = "Admin")]

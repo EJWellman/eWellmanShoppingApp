@@ -1,5 +1,4 @@
-﻿@model eWellmanShoppingApp.Models.CodeFirst.OrderItem
-@using System.linq;
+﻿@using System.linq;
 
 @{
     ViewBag.Title = "Past Orders";
@@ -19,9 +18,9 @@
 						<tr>
 							<th></th>
 							<th>Product Name</th>
-							<th>Price</th>
+							<th>Unit Price</th>
 							<th>Quantity</th>
-							<th>Total Price</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,86 +41,3 @@
 		</li>
 	}
 </ul>
-
-	@*<div>
-		<h4>Order</h4>
-		<hr />
-		<dl class="dl-horizontal">
-			<dt>
-				@Html.DisplayNameFor(model => model.addrSt)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.addrSt)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.addrCity)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.addrCity)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.addrState)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.addrState)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.addrZip)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.addrZip)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.addrCountry)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.addrCountry)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.phone)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.phone)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.orderTotal)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.orderTotal)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.orderDate)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.orderDate)
-			</dd>
-
-			<dt>
-				@Html.DisplayNameFor(model => model.orderDetails)
-			</dt>
-
-			<dd>
-				@Html.DisplayFor(model => model.orderDetails)
-			</dd>
-
-		</dl>
-	</div>
-	<p>
-		@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-		@Html.ActionLink("Back to List", "Index")
-	</p>*@

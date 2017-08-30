@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
 }
 
+@if (ViewBag.orderTotal != 0) {
 <table class="table">
     <tr>
         <th>
@@ -43,11 +44,19 @@
 			<td>
 				@item.unitTotal
 			</td>
-			<td>
-				<input type="submit" value="Update Quantity"/>
-				<input type="button" onclick="location.href='@Url.Action("Delete", "CartItems", new { id = item.id })'" value="Remove from Cart"/>
+			<td class="center-align">
+				<input type="submit" value="Update Quantity" class="btn lime darken-3"/>
+				<br />
+				<br />
+				<input type="button" onclick="location.href='@Url.Action("Delete", "CartItems", new { id = item.id })'" value="Remove from Cart" class="btn lime darken-3"/>
 			</td>
 		</tr>
 	}
 }
 </table>
+	<a class="btn lime darken-3" href="@Url.Action("Index", "Orders")">Check Out</a>
+}
+@if (ViewBag.orderTotal == 0) {
+	<h3>Your cart is empty!</h3>
+	<h4>Maybe you should take another look around, and see if there's anything you may have missed?</h4>
+}

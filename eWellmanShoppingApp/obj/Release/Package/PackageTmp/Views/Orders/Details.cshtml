@@ -1,90 +1,43 @@
-﻿@model eWellmanShoppingApp.Models.CodeFirst.Order
+﻿@using System.linq;
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Past Orders";
 }
 
-<h2>Details</h2>
+<h2>Past Orders</h2>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.addrSt)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.addrSt)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.addrCity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.addrCity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.addrState)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.addrState)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.addrZip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.addrZip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.addrCountry)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.addrCountry)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.orderTotal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.orderTotal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.orderDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.orderDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.orderDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.orderDetails)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<ul class="collapsible popout" data-collapsible="accordion">
+	@foreach (var order in ViewBag.pastOrders) {
+		<li>
+			<div class="collapsible-header"><i class="material-icons">dehaze</i> Order placed on: @order.orderDate</div>
+			<div class="collapsible-body">
+				<table class="striped">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Product Name</th>
+							<th>Unit Price</th>
+							<th>Quantity</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach(var item in ViewBag.orderItems) {
+							if (item.orderID.Equals(order.id)) {
+							<tr>
+								<td><img src="@item.item.mediaURL" style="width:125px; height:125px;" /></td>
+								<td>@item.item.name</td>
+								<td>@item.itemPrice</td>
+								<td>@item.quantity</td>
+								<td><a href="@Url.Action("Details", "Items", new { id=item.item.id })">Item Details</a></td>
+							</tr>
+							}
+						}
+					</tbody>
+				</table>
+			</div>
+		</li>
+	}
+</ul>

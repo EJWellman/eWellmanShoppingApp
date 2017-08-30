@@ -1,81 +1,56 @@
 ﻿@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.Order>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Check Out";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Check Out</h2>
+<div class="divider"></div>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.addrSt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.addrCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.addrState)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.addrZip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.addrCountry)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.orderTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.orderDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.orderDetails)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.addrSt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.addrCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.addrState)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.addrZip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.addrCountry)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.orderTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.orderDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.orderDetails)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
-
+	<tr>
+		<th></th>
+		<th>Item Name</th>
+		<th>Price</th>
+		<th>Count</th>
+		<th>Total Unit Price</th>
+	</tr>
+	@foreach (var item in ViewBag.itemsInCart) {
+		using (Html.BeginForm("Edit", "CartItems", new { idIn = item.id, countIn = "countIn" }, FormMethod.Post)) {
+			@Html.AntiForgeryToken()
+			<tr>
+				<td><img src="@item.item.mediaURL" style="width:125px; height:125px;" /></td>
+				<td>@item.item.name</td>
+				<td>@item.item.price</td>
+				<td>@item.count</td>
+				<td>@item.unitTotal	</td>
+			</tr>
+		}
+	}
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Total: @ViewBag.orderTotal</td>
+	</tr>
 </table>
+
+@using (Html.BeginForm("Verify", "Orders", FormMethod.Get)) {
+	@Html.AntiForgeryToken()
+
+	<div class="row grey darken-3 white-text" style="padding-left:10px; padding-right:10px; padding-top:5px">
+		<input placeholder="Street Address" type="text" name="streetIn" class="col s7" />
+		<input placeholder="City" type="text" name="cityIn" class="col offset-s1 s4"/>
+		<input placeholder="State" type="text" name="stateIn" class="col s2" />
+		<input placeholder="Zip Code" type="text" name="zipIn" class="col offset-s1 s2" />
+		<input placeholder="Country" type="text" name="countryIn" class="col offset-s1 s6" />
+		<input placeholder="Phone Number" type="tel" name="phoneIn" class="col s4" />
+		<div class="input-field col s12">
+			<textarea id="orderDetails" class="materialize-textarea" data-length="260" name="detailsIn"></textarea>
+			<label for="orderDetails">Type any special instructions here.</label>
+		</div>
+		<div class="col s12" style="margin-bottom:20px">
+			<input type="submit" class="btn lime darken-3" value="Check Out"/>
+		</div>
+	</div>
+}

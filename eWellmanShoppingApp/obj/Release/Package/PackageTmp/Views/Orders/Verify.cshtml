@@ -1,0 +1,77 @@
+﻿@model eWellmanShoppingApp.Models.CodeFirst.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@using (Html.BeginForm("Create", "Orders", FormMethod.Post)) {
+	@Html.AntiForgeryToken()
+	<div>
+		<h4>Order</h4>
+		<hr />
+			@Html.HiddenFor(model => model.addrSt)
+			@Html.HiddenFor(model => model.addrCity)
+			@Html.HiddenFor(model => model.addrState)
+			@Html.HiddenFor(model => model.addrZip)
+			@Html.HiddenFor(model => model.addrCountry)
+			@Html.HiddenFor(model => model.phone)
+			@Html.HiddenFor(model => model.orderDetails)
+		<dl class="dl-horizontal">
+			<dt>
+				Street Address: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.addrSt)
+			</dd>
+			<dt>
+				City: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.addrCity)
+			</dd>
+			<dt>
+				State: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.addrState)
+			</dd>
+			<dt>
+				Zip Code:
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.addrZip)
+			</dd>
+			<dt>
+				Country: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.addrCountry)
+			</dd>
+			<dt>
+				Phone Number: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.phone)
+			</dd>
+			<dt>
+				Order Total: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.orderTotal)
+			</dd>
+			<dt>
+				Special Instructions: 
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.orderDetails)
+			</dd>
+		</dl>
+	</div>
+	<p>
+		<input type="submit" class="btn lime darken-3" />
+		@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+		@Html.ActionLink("Back to List", "Index")
+	</p>
+}

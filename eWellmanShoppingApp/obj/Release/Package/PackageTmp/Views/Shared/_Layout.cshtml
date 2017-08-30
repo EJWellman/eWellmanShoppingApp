@@ -61,7 +61,8 @@
 				<li class="divider"></li>
 				<li><a href="@Url.Action("Index","CartItems")" class="valign-wrapper">@if (ViewBag.itemsInCart.Count > 0) { @ViewBag.itemsInCart.Count}<i style="display:inline" class="material-icons">shopping_cart</i></a></li>
 			}
-			<li><a href="#"><i class="small material-icons">shopping_cart</i>Cart</a></li>
+			<li class="divider"></li>
+			<li><a href="@Url.Action("Login","Account")">Login</a></li>
 		</ul>
 	</header>
 	<!--Body Content-->

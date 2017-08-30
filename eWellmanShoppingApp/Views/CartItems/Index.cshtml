@@ -44,9 +44,11 @@
 			<td>
 				@item.unitTotal
 			</td>
-			<td>
-				<input type="submit" value="Update Quantity"/>
-				<input type="button" onclick="location.href='@Url.Action("Delete", "CartItems", new { id = item.id })'" value="Remove from Cart"/>
+			<td class="center-align">
+				<input type="submit" value="Update Quantity" class="btn lime darken-3"/>
+				<br />
+				<br />
+				<input type="button" onclick="location.href='@Url.Action("Delete", "CartItems", new { id = item.id })'" value="Remove from Cart" class="btn lime darken-3"/>
 			</td>
 		</tr>
 	}

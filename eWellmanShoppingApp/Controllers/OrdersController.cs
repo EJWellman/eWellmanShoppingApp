@@ -46,19 +46,8 @@ namespace eWellmanShoppingApp.Controllers
 				return HttpNotFound();
 			}
 			OrderItem orderItem = new OrderItem();
-
-			//foreach (var o in ViewBag.pastOrders) {
-			//	foreach (var oi in db.orderItems) {
-			//		ViewBag.orderItems.Add(oi.orderID.Equals(o.id));
-			//	}
-			//}
-
-			//List<OrderItem> orderItemList = new List<OrderItem>();
-			//foreach(var o in db.orderItems) {
-			//	orderItemList.Add(o.orderID.Equals());
-			//}
 			
-			return View(orderItem);
+			return View();
 		}
 
 		//// GET: Orders/Create

@@ -17,13 +17,12 @@ namespace eWellmanShoppingApp.Models {
 				ViewBag.fullName = currUser.fullName;
 				ViewBag.itemsInCart = currUser.cartItems.ToList();
 				ViewBag.pastOrders = currUser.orders.ToList();
+				ViewBag.orderItems = db.orderItems.ToList();
 				ViewBag.orderTotal = 0;
 				foreach (var item in ViewBag.itemsInCart) {
 					ViewBag.orderTotal += item.unitTotal;
 				}
 			}
 		}
-
-
 	}
 }

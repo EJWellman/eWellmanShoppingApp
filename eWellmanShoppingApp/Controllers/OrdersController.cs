@@ -38,8 +38,6 @@ namespace eWellmanShoppingApp.Controllers
 			return View(newOrder);
 		}
 
-		//WORK HERE // WORK HERE // WORK HERE
-
 		// GET: Orders/Details/5
 		public ActionResult Details() {
 			var currUser = db.Users.Find(User.Identity.GetUserId());
@@ -48,12 +46,19 @@ namespace eWellmanShoppingApp.Controllers
 				return HttpNotFound();
 			}
 			OrderItem orderItem = new OrderItem();
-			List<OrderItem> orderItemList = new List<OrderItem>();
-			foreach(var o in db.orderItems) {
-				orderItemList.Add(new OrderItem());
-			}
+
+			//foreach (var o in ViewBag.pastOrders) {
+			//	foreach (var oi in db.orderItems) {
+			//		ViewBag.orderItems.Add(oi.orderID.Equals(o.id));
+			//	}
+			//}
+
+			//List<OrderItem> orderItemList = new List<OrderItem>();
+			//foreach(var o in db.orderItems) {
+			//	orderItemList.Add(o.orderID.Equals());
+			//}
 			
-			return View(order);
+			return View(orderItem);
 		}
 
 		//// GET: Orders/Create

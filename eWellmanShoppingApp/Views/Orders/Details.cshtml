@@ -1,4 +1,4 @@
-﻿@model IEnumerable<eWellmanShoppingApp.Models.CodeFirst.Order>
+﻿@model eWellmanShoppingApp.Models.CodeFirst.OrderItem
 @using System.linq;
 
 @{
@@ -6,6 +6,8 @@
 }
 
 <h2>Past Orders</h2>
+
+
 
 <ul class="collapsible popout" data-collapsible="accordion">
 	@foreach (var order in ViewBag.pastOrders) {
@@ -23,15 +25,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						@ViewBag.pastOrders.orderItems
-						@foreach(var item in order) {
+						@foreach(var item in ViewBag.orderItems) {
+							if (item.orderID.Equals(order.id)) {
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td><img src="@item.item.mediaURL" style="width:125px; height:125px;" /></td>
+								<td>@item.item.name</td>
+								<td>@item.itemPrice</td>
+								<td>@item.quantity</td>
+								<td><a href="@Url.Action("Details", "Items", new { id=item.item.id })">Item Details</a></td>
 							</tr>
+							}
 						}
 					</tbody>
 				</table>
@@ -40,7 +43,7 @@
 	}
 </ul>
 
-	<div>
+	@*<div>
 		<h4>Order</h4>
 		<hr />
 		<dl class="dl-horizontal">
@@ -121,4 +124,4 @@
 	<p>
 		@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
 		@Html.ActionLink("Back to List", "Index")
-	</p>
+	</p>*@

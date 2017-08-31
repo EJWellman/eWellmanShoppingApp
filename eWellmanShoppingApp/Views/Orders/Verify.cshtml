@@ -4,7 +4,28 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Order Details</h2>
+<table class="table">
+	<tr>
+		<th></th>
+		<th>Item Name</th>
+		<th>Price</th>
+		<th>Count</th>
+		<th>Total Unit Price</th>
+	</tr>
+	@foreach (var item in ViewBag.itemsInCart) {
+		using (Html.BeginForm("Edit", "CartItems", new { idIn = item.id, countIn = "countIn" }, FormMethod.Post)) {
+			@Html.AntiForgeryToken()
+			<tr>
+				<td><img src="@item.item.mediaURL" style="width:100px; height:100px;" /></td>
+				<td>@item.item.name</td>
+				<td>@item.item.price</td>
+				<td>@item.count</td>
+				<td>@item.unitTotal</td>
+			</tr>
+		}
+	}
+</table>
 
 @using (Html.BeginForm("Create", "Orders", FormMethod.Post)) {
 	@Html.AntiForgeryToken()
@@ -18,60 +39,24 @@
 			@Html.HiddenFor(model => model.addrCountry)
 			@Html.HiddenFor(model => model.phone)
 			@Html.HiddenFor(model => model.orderDetails)
-		<dl class="dl-horizontal">
-			<dt>
-				Street Address: 
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.addrSt)
-			</dd>
-			<dt>
-				City: 
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.addrCity)
-			</dd>
-			<dt>
-				State: 
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.addrState)
-			</dd>
-			<dt>
-				Zip Code:
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.addrZip)
-			</dd>
-			<dt>
-				Country: 
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.addrCountry)
-			</dd>
-			<dt>
-				Phone Number: 
-			</dt>
-			<dd>
+		<div class="row">
+			<div class="col s4">
+				<b>Address:</b><br/>
+				@Html.DisplayFor(model => model.addrSt), @Html.DisplayFor(model => model.addrCity) @Html.DisplayFor(model => model.addrState).<br/>
+				@Html.DisplayFor(model => model.addrZip), @Html.DisplayFor(model => model.addrCountry) <br/>
+				<br/>
+				<b>Phone Number:</b><br/>
 				@Html.DisplayFor(model => model.phone)
-			</dd>
-			<dt>
-				Order Total: 
-			</dt>
-			<dd>
-				@Html.DisplayFor(model => model.orderTotal)
-			</dd>
-			<dt>
-				Special Instructions: 
-			</dt>
-			<dd>
+			</div>
+			<div class="col s3">
+				<b>Special Instructions:</b> <br/>
 				@Html.DisplayFor(model => model.orderDetails)
-			</dd>
-		</dl>
+			</div>
+			<div class="col offset-s2 s3">
+				<b>Total: @ViewBag.orderTotal</b><br/>
+				<br/>
+				<input type="submit" class="btn lime darken-3" value="Finalize Order" />
+			</div>
+		</div>
 	</div>
-	<p>
-		<input type="submit" class="btn lime darken-3" />
-		@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-		@Html.ActionLink("Back to List", "Index")
-	</p>
 }

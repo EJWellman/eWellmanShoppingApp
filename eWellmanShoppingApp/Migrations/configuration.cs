@@ -24,7 +24,7 @@ namespace eWellmanShoppingApp.Migrations {
 					Email = "Eric.J.Wellman@gmail.com",
 					firstName = "Eric",
 					lastName = "Wellman"
-				}, "***REMOVED***");
+				}, "Nothing$@90");
 			}
 			var userId = userManager.FindByEmail("Eric.J.Wellman@gmail.com").Id;
 			userManager.AddToRole(userId, "Admin");
